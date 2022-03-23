@@ -1,0 +1,9 @@
+// https://stackoverflow.com/questions/38210604/visual-studio-code-automatic-imports#answer-53015835
+{
+  "compilerOptions": {
+    "checkJs": true,
+    "jsx": "react-native",
+    
+  },
+  "exclude": ["node_modules", "**/node_modules/*"]
+}
