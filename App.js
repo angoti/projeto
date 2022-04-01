@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useMemo, useReducer } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './src/screens/HomeScreen';
-import SignInScreen from './src/screens/SignInScreen';
+import SignInScreen, { logOut } from './src/screens/SignInScreen';
 import SplashScreen from './src/screens/SplashScreen';
 import { Text, TouchableOpacity } from 'react-native';
 import { styles } from './src/util/styles';
@@ -44,8 +44,8 @@ function App() {
 
   // temporizador para exibir a splashScreen
   useEffect(() => {
-    const sleep = async ms => {
-      await new Promise(resolve => setTimeout(resolve, ms));
+    const sleep = async (ms) => {
+      await new Promise((resolve) => setTimeout(resolve, ms));
       // @ts-ignore
       dispatch({ type: 'RESTORE_TOKEN' });
     };
@@ -54,12 +54,16 @@ function App() {
 
   const authContext = useMemo(
     () => ({
-      signIn: async data => {
+      signIn: async (data) => {
         // @ts-ignore
         dispatch({ type: 'SIGN_IN', token: data });
       },
       // @ts-ignore
-      signOut: () => dispatch({ type: 'SIGN_OUT' }),
+      signOut: () => {
+        logOut();
+        // @ts-ignore
+        dispatch({ type: 'SIGN_OUT' });
+      },
       usuario: state.userToken,
     }),
     [state.userToken],
@@ -80,6 +84,13 @@ function App() {
               component={SignInScreen}
               options={{
                 title: 'Sign in',
+                headerStyle: {
+                  backgroundColor: '#2b008f',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                },
                 // When logging out, a pop animation feels intuitive
                 // You can remove this if you want the default 'push' animation
                 animationTypeForReplace: state.isSignout ? 'pop' : 'push',
@@ -102,10 +113,11 @@ function App() {
                 headerTitleAlign: 'left',
                 headerRight: () => (
                   <TouchableOpacity
-                    onPress={() => authContext.signOut()}
-                    style={styles.button}
-                  >
-                    <Text>Sair</Text>
+                    onPress={() => {
+                      //authContext.usuario.delete();
+                      authContext.signOut();
+                    }}>
+                    <Text style={styles.logoutButton}>Sair</Text>
                   </TouchableOpacity>
                 ),
               }}

@@ -1,9 +1,14 @@
 // https://stackoverflow.com/questions/38210604/visual-studio-code-automatic-imports#answer-53015835
 {
   "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
     "checkJs": true,
     "jsx": "react-native",
-    
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["./src/*"]
+    }
   },
   "exclude": ["node_modules", "**/node_modules/*"]
 }

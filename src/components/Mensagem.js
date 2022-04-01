@@ -1,12 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Avatar, List } from 'react-native-paper';
-import { AuthContext } from '../../App';
 
-function Mensagem({ texto }) {
-  const { usuario } = useContext(AuthContext);
+function Mensagem({ texto, usuario, foto }) {
   return (
     <List.Item
-      title={usuario.displayName + ' falou'}
+      title={usuario + ' falou'}
       titleStyle={{ fontSize: 10 }}
       description={texto}
       descriptionStyle={{ fontSize: 16 }}
@@ -14,7 +12,7 @@ function Mensagem({ texto }) {
         <Avatar.Image
           size={44}
           source={{
-            uri: usuario.photoURL,
+            uri: foto,
           }}
         />
       )}
