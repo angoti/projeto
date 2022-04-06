@@ -4,11 +4,7 @@
     "module": "commonjs",
     "target": "es6",
     "checkJs": true,
-    "jsx": "react-native",
-    "baseUrl": ".",
-    "paths": {
-      "src/*": ["./src/*"]
-    }
+    "jsx": "react-native"
   },
   "exclude": ["node_modules", "**/node_modules/*"]
 }

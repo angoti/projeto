@@ -5,6 +5,8 @@ import firestore from '@react-native-firebase/firestore';
 import { Button, TextInput } from 'react-native-paper';
 import Mensagem from '../components/Mensagem';
 import { AuthContext } from '../../App';
+import { launchImageLibrary } from 'react-native-image-picker';
+import { saveImageMessage } from '../util/firebase';
 
 const HomeScreen = () => {
   const ref = firestore().collection('mensagens');
@@ -21,6 +23,15 @@ const HomeScreen = () => {
       timeStamp: firestore.FieldValue.serverTimestamp(),
     });
     setMensagem('');
+  }
+
+  function enviarImagem() {
+    console.log('escolhendo imagem');
+    launchImageLibrary({
+      mediaType: 'photo',
+    }).then((result) => {
+      saveImageMessage(result.assets[0], usuario);
+    });
   }
 
   useEffect(() => {
@@ -62,7 +73,7 @@ const HomeScreen = () => {
         onChangeText={setMensagem}
       />
       <Button onPress={() => enviarMensagem()}>Enviar mensagem</Button>
-      <Button onPress={() => enviarMensagem()}>Imagem</Button>
+      <Button onPress={() => enviarImagem()}>Imagem</Button>
     </>
   );
 };
