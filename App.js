@@ -49,7 +49,7 @@ function App() {
       // @ts-ignore
       dispatch({ type: 'RESTORE_TOKEN' });
     };
-    sleep(100);
+    sleep(500);
   }, []);
 
   const authContext = useMemo(
@@ -70,7 +70,6 @@ function App() {
   );
 
   if (state.isLoading) {
-    // We haven't finished checking for the token yet
     return <SplashScreen />;
   }
   return (

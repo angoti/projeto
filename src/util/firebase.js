@@ -1,4 +1,3 @@
-import { utils } from '@react-native-firebase/app';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 
@@ -19,25 +18,25 @@ export async function saveImageMessage(file, usuario) {
     // 2 - Upload the image to Cloud Storage.
     const filePath = `${usuario.uid}/${messageRef.id}/${file.fileName}`;
     const newImageRef = storage().ref(filePath);
+    const task = newImageRef.putFile(file.uri);
 
-    console.log(`---------------------> ${utils.FilePath.PICTURES_DIRECTORY}`);
-    console.log(`${utils.FilePath.PICTURES_DIRECTORY}/${file.fileName}`);
-    console.log(file.uri);
-    // const fileUri = `${utils.FilePath.PICTURES_DIRECTORY}/${file.fileName}`;
-    await newImageRef.putFile(file.uri).on('state_changed', (taskSnapshot) => {
+    task.on('state_changed', (taskSnapshot) => {
       console.log(
         `${taskSnapshot.bytesTransferred} transferred out of ${taskSnapshot.totalBytes}`,
       );
     });
 
-    // 3 - Generate a public URL for the file.
-    // const publicImageUrl = await newImageRef.getDownloadURL();
-
-    // 4 - Update the chat message placeholder with the image’s URL.
-    // await messageRef.update({
-    //   imageUrl: publicImageUrl,
-    //   storageUri: fileSnapshot.metadata.fullPath,
-    // });
+    task.then(() => {
+      console.log('Image uploaded to the bucket!');
+      // 3 - Generate a public URL for the file.
+      newImageRef.getDownloadURL().then((publicImageUrl) => {
+        console.log('------------> url da imagem: ' + publicImageUrl);
+        // 4 - Update the chat message placeholder with the image’s URL.
+        messageRef.update({
+          imageUrl: publicImageUrl,
+        });
+      });
+    });
   } catch (error) {
     console.error(
       '-----------------> There was an error uploading a file to Cloud Storage:',

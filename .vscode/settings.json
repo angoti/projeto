@@ -24,5 +24,12 @@
     ".buckconfig",
     ".flowconfig",
     ".gitignore"
-  ]
+  ],
+  "[gradle]": {
+    "editor.defaultFormatter": "richardwillis.vscode-spotless-gradle",
+    "spotlessGradle.diagnostics.enable": true,
+    "spotlessGradle.format.enable": true
+  },
+  "spotlessGradle.diagnostics.enable": true,
+  "spotlessGradle.format.enable": true
 }

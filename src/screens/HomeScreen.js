@@ -64,16 +64,29 @@ const HomeScreen = () => {
         style={styles.mensagens}
         data={mensagens}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <Mensagem {...item} />}
+        renderItem={({ item }) => {
+          return <Mensagem {...item} />;
+        }}
         ItemSeparatorComponent={Separador}
       />
-      <TextInput
-        label={'Nova mensagem'}
-        value={mensagem}
-        onChangeText={setMensagem}
-      />
-      <Button onPress={() => enviarMensagem()}>Enviar mensagem</Button>
-      <Button onPress={() => enviarImagem()}>Imagem</Button>
+      <View style={styles.containerTextInput}>
+        <TextInput
+          label={'Nova mensagem'}
+          value={mensagem}
+          onChangeText={setMensagem}
+          style={styles.textInputStyle}
+        />
+        <Button
+          icon="send"
+          onPress={() => enviarMensagem()}
+          style={styles.buttonTextInput}
+        />
+        <Button
+          icon="camera"
+          onPress={() => enviarImagem()}
+          style={styles.buttonTextInput}
+        />
+      </View>
     </>
   );
 };
