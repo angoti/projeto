@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "467453762904",
+    "project_id": "chatapp-2e720",
+    "storage_bucket": "chatapp-2e720.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467453762904:android:f66af7e01b9d13525f992d",
+        "android_client_info": {
+          "package_name": "com.professorangoti.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "467453762904-pu5e3ojipk1opn69c710bofrkkf709o2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDTTSkxMD-cVb0_ESLTwSHvv3h9spQhhc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "467453762904-pu5e3ojipk1opn69c710bofrkkf709o2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,43 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "_ruby-version": true,
+    ".buckconfig": true,
+    ".flowconfig": true,
+    ".gitignore": true,
+    ".watchmanconfig": true,
+    "babel.config.js": true,
+    "Gemfile": true,
+    "Gemfile.lock": true,
+    "metro.config.js": true,
+    "yarn.lock": true,
+    "ios": true,
+    "_bundle": true,
+    "__tests__": true,
+    "node_modules": true,
+    "jsconfig.json": true
+  },
+  "hide-files.files": [
+    "_ruby-version",
+    ".buckconfig",
+    ".flowconfig",
+    ".gitignore",
+    ".watchmanconfig",
+    "babel.config.js",
+    "Gemfile",
+    "Gemfile.lock",
+    "metro.config.js",
+    "yarn.lock",
+    "ios",
+    "_bundle",
+    "__tests__",
+    "node_modules",
+    "jsconfig.json"
+  ],
+  "java.configuration.updateBuildConfiguration": "automatic"
+}
